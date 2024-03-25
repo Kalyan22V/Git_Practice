@@ -33,7 +33,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: my-artifact
-          path: /home/kalyan/Git_Practice/src/mypypackKV
+          path: /dist
   dowload-artifact:
     name: dowload artifact
     needs: upload-artifact
@@ -45,12 +45,11 @@ jobs:
           name: my-artifact
       - name: install package
         run: |
-          pip install mypypackKV
+          pip install *.whl
       - name: Run file
         run: |
-          python script.py
+          python -c "print(mypypackKV.simple_functions.double_number(19))"
         
-
 
 
 
