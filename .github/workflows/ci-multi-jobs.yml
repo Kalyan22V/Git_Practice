@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  with-checkout-job:
+  upload-artifact:
     name: With Checkout
     runs-on: 'ubuntu-latest'
     steps:
@@ -30,3 +30,34 @@ jobs:
         run: |
           sudo apt-get install -y tree
           tree .
+      - name: upload artifact
+      - uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: ~/Git_Practice/src/mypypackKV/
+  dowload-artifact:
+    name: dowload artifact
+    needs: upload-artifact
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: conda env set
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          activate-environment: mle-dev
+          environment-file: env.yml
+          auto-activate-base: false
+      - name: download packs
+      - uses: actions/download-artifact@v4
+        with:
+          name: my-artifact
+      - name: install package
+        run: |
+          pip install mypypackKV
+      - name: Run file
+        run: |
+          python script.py
+        
+
+
+
+
