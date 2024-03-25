@@ -30,7 +30,7 @@ jobs:
           sudo apt-get install -y tree
           tree .
       - name: upload artifact
-      - uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: my-artifact
           path: ~/Git_Practice/src/mypypackKV/
@@ -40,13 +40,13 @@ jobs:
     runs-on: 'ubuntu-latest'
     steps:
       - name: conda env set
-      - uses: conda-incubator/setup-miniconda@v3
+        uses: conda-incubator/setup-miniconda@v3
         with:
           activate-environment: mle-dev
           environment-file: env.yml
           auto-activate-base: false
       - name: download packs
-      - uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v4
         with:
           name: my-artifact
       - name: install package
