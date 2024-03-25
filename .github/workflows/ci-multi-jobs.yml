@@ -8,7 +8,7 @@ on:
 
 jobs:
   upload-artifact:
-    name: With Checkout
+    name: upload artifact
     runs-on: 'ubuntu-latest'
     steps:
       - name: Git Checkout
