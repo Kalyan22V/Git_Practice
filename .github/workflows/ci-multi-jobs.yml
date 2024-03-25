@@ -3,7 +3,7 @@ name: CI-Multi-Jobs
 on:
   push:
     branches:
-      - main
+      - workflow_branch
   workflow_dispatch:
 
 jobs:
@@ -21,6 +21,9 @@ jobs:
       - name: Run build
         run: |
           python -m build
+      - name: Run ls
+        run: |
+          ls -la
       - name: Install tree & run after build
         run: |
           sudo apt-get install -y tree
