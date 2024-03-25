@@ -48,7 +48,7 @@ jobs:
           pip install *.whl
       - name: Run file
         run: |
-          python -c "print(mypypackKV.simple_functions.double_number(19))"
+          python -c "from mypypackKV import simple_functions; print(simple_functions.double_number(98))"
         
 
 
