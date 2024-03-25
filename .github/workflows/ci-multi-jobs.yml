@@ -20,6 +20,8 @@ jobs:
           tree .
       - name: Run build
         run: |
+          pip install --upgrade setuptools
+          pip install --upgrade build	
           python -m build
       - name: Run ls
         run: |
